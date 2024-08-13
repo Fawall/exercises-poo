@@ -3,14 +3,23 @@
 using namespace std;
 
 bool obterPrimeiraDisponibilidade(int inicios[], int fins[], int quantidade,
-int duracao, int dataMaxima, int* inicio, int& fim) {
-  
-  
-  for(int i = 0; i < quantidade; i++)
+  int duracao, int dataMaxima, int *inicio, int &fim)
+{
+
+  if (quantidade == 0)
   {
-    if(fins[i] <= dataMaxima - duracao && inicios[i+1] >= fins[i] + duracao){
-      
-      
+    inicio = &inicio[0];
+    fim = inicio[0] + duracao;
+
+    return true;
+  }
+
+  for (int i = 0; i < quantidade; i++)
+  {
+
+    if (fins[i] <= dataMaxima - duracao && inicios[i + 1] >= fins[i] + duracao)
+    {
+
       cout << fins[i] << endl;
 
       inicio = &fins[i];
@@ -19,28 +28,24 @@ int duracao, int dataMaxima, int* inicio, int& fim) {
       cout << fins[i] + duracao << endl;
 
       return true;
-    
     }
-
-
-
   }
   inicio = 0;
   fim = 0;
   return false;
 }
 
-
 /*Comente a main para enviar*/
-int main() {
+int main()
+{
 
   int inicios[] = {1, 10, 13};
   int fins[] = {3, 13, 15};
-  int quantidade = 3;
+  int quantidade = 0;
   int duracao = 3;
-  int dataMaxima = 20;
+  int dataMaxima = 15;
 
-  int* inicio;
+  int *inicio;
   int fim;
 
   bool teste;
