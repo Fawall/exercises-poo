@@ -28,23 +28,66 @@ class Reserva {
 public:
     Quarto *quarto1 = nullptr;
     Quarto *quarto2 = nullptr;
+
     int inicio = 0;
     int fim = 0;
+
+    
+
     bool adicionarQuarto(Quarto *q){
         if(quarto1 == nullptr){
-            quarto1 = q;
+            quarto1= new Quarto;
+
+            quarto1->numeroDoQuarto=q->numeroDoQuarto;  ;
+            quarto1->numeroDePessoas=q->numeroDePessoas;
+            quarto1->numeroDeCamas=q->numeroDeCamas;
+            
+            return true;
         }
         if(quarto2 == nullptr){
-            quarto2 = q;
+            quarto2= new Quarto;
+
+            quarto2->numeroDoQuarto=q->numeroDoQuarto;
+            quarto2->numeroDePessoas=q->numeroDePessoas;
+            quarto2->numeroDeCamas=q->numeroDeCamas;
+            return true;
         }
+
+
         return false;
-
     };
+
+     
     double calcularPreco(){
-        return (quarto1->getPrecoDiaria() + quarto2 ->getPrecoDiaria());
 
+        int reserva = (fim - inicio);
+        if(quarto1 != nullptr && quarto2 != nullptr){
+            double preco = quarto1->getPrecoDiaria() * reserva + quarto2->getPrecoDiaria() * reserva;
+            return preco;
+        }
+
+        if(quarto1 == nullptr && quarto2 != nullptr){
+            double preco = quarto2->getPrecoDiaria() * reserva;
+            return preco;
+        }
+        if(quarto1 != nullptr && quarto2 == nullptr){
+            double preco = quarto1->getPrecoDiaria() * reserva;
+            return preco;
+        }
+        return 0;        
+        
     };
-    void imprimir();
+
+
+    void imprimir(){
+        cout << "Reserva:" << endl;
+        if(quarto1 != nullptr && quarto2 != nullptr){
+            quarto1->imprimir();
+            quarto2->imprimir();
+
+            cout << "Preco total: " << calcularPreco(); 
+        }
+    }
 };
 
 
@@ -53,10 +96,17 @@ public:
 void teste1() {
     // Implemente a funcao teste do exercicio 01 segundo o enunciado
     Quarto *quarto1 = new Quarto;
+    Reserva *reservaQuarto1 = new Reserva;
+
+    reservaQuarto1->inicio=2;
+    reservaQuarto1->fim=13;
+
     quarto1 ->numeroDoQuarto=31;
     quarto1 ->numeroDePessoas=3;
     quarto1 ->numeroDeCamas=2;
     quarto1->imprimir();
+
+    reservaQuarto1->adicionarQuarto(quarto1);
 
 
 
@@ -69,10 +119,39 @@ void teste1() {
 }
 
 void teste2() {
+    Quarto *quarto1 = new Quarto;
+    Reserva *reserva1 = new Reserva;
+
+    quarto1 ->numeroDoQuarto=31;
+    quarto1 ->numeroDePessoas=3;
+    quarto1 ->numeroDeCamas=2;
+    quarto1->imprimir();
+
+    reserva1->inicio=2;
+    reserva1->fim=13;
+
+    reserva1->adicionarQuarto(quarto1);
+
+    Quarto *quarto2 = new Quarto;
+
+    quarto2->numeroDoQuarto=32;
+    quarto2->numeroDePessoas=2;
+    quarto2->numeroDeCamas=1;
+    quarto2->imprimir();
+
+    reserva1->adicionarQuarto(quarto2);
+
+    reserva1->imprimir();
+
+
+
+
+
     // Implemente a funcao teste do exercicio 02 segundo o enunciado
 }
 
 int main() {
-    teste1();
+    // teste1();
+    teste2();
     return 0;
 }
