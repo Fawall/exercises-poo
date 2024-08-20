@@ -12,7 +12,7 @@ public:
 
     double getPrecoDiaria(){
         if(numeroDePessoas == 2){
-            return (150);
+            return (100 + 100*0.5  );
         }
         return 100 * numeroDePessoas;
     };
@@ -30,9 +30,7 @@ public:
     Quarto *quarto2 = nullptr;
 
     int inicio = 0;
-    int fim = 0;
-
-    
+    int fim = 0; 
 
     bool adicionarQuarto(Quarto *q){
         if(quarto1 == nullptr){
@@ -52,7 +50,6 @@ public:
             quarto2->numeroDeCamas=q->numeroDeCamas;
             return true;
         }
-
 
         return false;
     };
@@ -78,7 +75,6 @@ public:
         
     };
 
-
     void imprimir(){
         cout << "Reserva:" << endl;
         if(quarto1 != nullptr && quarto2 != nullptr){
@@ -89,8 +85,6 @@ public:
         }
     }
 };
-
-
 // Implementar os metodos da classe Reserva
 
 void teste1() {
@@ -108,8 +102,6 @@ void teste1() {
 
     reservaQuarto1->adicionarQuarto(quarto1);
 
-
-
     Quarto *quarto2 = new Quarto;
     quarto2 ->numeroDoQuarto=32;
     quarto2 ->numeroDePessoas=2;
@@ -120,17 +112,17 @@ void teste1() {
 
 void teste2() {
     Quarto *quarto1 = new Quarto;
-    Reserva *reserva1 = new Reserva;
+    Reserva *reservas = new Reserva;
 
     quarto1 ->numeroDoQuarto=31;
     quarto1 ->numeroDePessoas=3;
     quarto1 ->numeroDeCamas=2;
     quarto1->imprimir();
 
-    reserva1->inicio=2;
-    reserva1->fim=13;
+    reservas->inicio=2;
+    reservas->fim=13;
 
-    reserva1->adicionarQuarto(quarto1);
+    reservas->adicionarQuarto(quarto1);
 
     Quarto *quarto2 = new Quarto;
 
@@ -139,14 +131,8 @@ void teste2() {
     quarto2->numeroDeCamas=1;
     quarto2->imprimir();
 
-    reserva1->adicionarQuarto(quarto2);
-
-    reserva1->imprimir();
-
-
-
-
-
+    reservas->adicionarQuarto(quarto2);
+    reservas->imprimir();
     // Implemente a funcao teste do exercicio 02 segundo o enunciado
 }
 
