@@ -42,7 +42,7 @@ public:
             
             return true;
         }
-        if(quarto2 == nullptr){
+        if(quarto2 == nullptr && q->numeroDoQuarto != quarto1->numeroDoQuarto){
             quarto2= new Quarto;
 
             quarto2->numeroDoQuarto=q->numeroDoQuarto;
@@ -50,7 +50,6 @@ public:
             quarto2->numeroDeCamas=q->numeroDeCamas;
             return true;
         }
-
         return false;
     };
 
@@ -81,6 +80,11 @@ public:
             quarto1->imprimir();
             quarto2->imprimir();
 
+            cout << "Preco total: " << calcularPreco(); 
+        }
+
+        if(quarto1 != nullptr && quarto2 == nullptr){
+            quarto1->imprimir();
             cout << "Preco total: " << calcularPreco(); 
         }
     }
@@ -132,12 +136,14 @@ void teste2() {
     quarto2->imprimir();
 
     reservas->adicionarQuarto(quarto2);
+
     reservas->imprimir();
     // Implemente a funcao teste do exercicio 02 segundo o enunciado
 }
 
 int main() {
     // teste1();
-    teste2();
+    // teste2();
+
     return 0;
 }
