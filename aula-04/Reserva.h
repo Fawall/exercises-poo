@@ -1,3 +1,7 @@
+#ifndef RESERVA_H
+#define RESERVA_H
+
+
 class Reserva
 {
 private:
@@ -17,3 +21,5 @@ public:
     
     void imprimir();
 };
+
+#endif
