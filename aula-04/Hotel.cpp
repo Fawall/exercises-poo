@@ -40,17 +40,27 @@ bool Hotel::adicionar(Reserva *reserva)
 bool Hotel::estaDisponivel(int quarto, int inicio, int fim)
 {
 
+
     for (int i = 0; i < this->quantidade; i++)
     {
 
         int inicioReserva = reservas[i]->getInicio();
         int fimReserva = reservas[i]->getFim();
 
-        if(reservas[i]->getQuarto() == quarto){
-            return false;
+        if(reservas[i]->getQuarto() != quarto){
+            return true;
         }
 
-        if(reservas[i]->getQuarto() != quarto){
+
+        if(reservas[i]->getQuarto() == quarto){
+
+        // Verifica se está tentando adicionar reseva repetida
+            for(int j = 0; j < this->quantidade; j++){
+
+                if(reservas[i]->getInicio() == inicio )
+                    return false;
+            }
+            
 
             int inicioReserva = reservas[i]->getInicio();
             int fimReserva = reservas[i]->getFim();
