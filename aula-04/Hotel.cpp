@@ -4,19 +4,26 @@
 
 using namespace std;
 
-bool Hotel::adicionar(Reserva *reserva){
-    if(this->quantidade >= MAXIMO_DE_RESERVAS){
+bool Hotel::adicionar(Reserva *reserva)
+{
+    if (this->quantidade >= MAXIMO_DE_RESERVAS)
+    {
         return false;
     }
 
-    if(this->quantidade == 0){
+    if (this->quantidade == 0)
+    {
+
         this->reservas[0] = reserva;
         quantidade += 1;
         return true;
     }
 
-    for(int i = 0; i < quantidade; i++){
-        if(this->reservas[i]->getQuarto() != reserva->getQuarto()){
+    for (int i = 0; i < quantidade; i++)
+    {
+        if (estaDisponivel(reserva->getQuarto(), reserva->getInicio(), reserva->getFim() == true))
+        {
+
             this->reservas[this->quantidade] = new Reserva();
             this->reservas[this->quantidade] = reserva;
 
@@ -24,39 +31,50 @@ bool Hotel::adicionar(Reserva *reserva){
 
             return true;
         }
-        return false;        
-        
+
+
     }
-
-
+    return false;
 }
 
-bool Hotel::estaDisponivel(int quarto, int inicio, int fim){
-    
-    for(int i = 0; i < this->quantidade; i++){
-        cout << reservas[0]->getQuarto();
+bool Hotel::estaDisponivel(int quarto, int inicio, int fim)
+{
+
+    for (int i = 0; i < this->quantidade; i++)
+    {
+
+        int inicioReserva = reservas[i]->getInicio();
+        int fimReserva = reservas[i]->getFim();
+
+        if(reservas[i]->getQuarto() == quarto){
+            return false;
+        }
+
         if(reservas[i]->getQuarto() != quarto){
 
             int inicioReserva = reservas[i]->getInicio();
             int fimReserva = reservas[i]->getFim();
 
-            if (!(fim <= inicioReserva || inicio >= fimReserva)) {
+            if(inicio >= fimReserva || fim >= inicioReserva){
                 return true;
             }
 
         }
     }
     return false;
+
 }
 
-Reserva* Hotel::getReserva(int i){
+Reserva *Hotel::getReserva(int i)
+{
     return this->reservas[i];
 }
 
-
-
-void Hotel::imprimir(){
-    std::cout << "Hotel com " << quantidade << " reservas" << endl;
-
+void Hotel::imprimir()
+{
+    std::cout << "Hotel com " << this->quantidade << " reservas" << endl;
+    for (int i = 0; i < this->quantidade; i++)
+    {
+        std::cout << "Reserva (" << reservas[i]->getInicio() << "-" << reservas[i]->getFim() << "): Quarto " << reservas[i]->getQuarto() << " - " << reservas[i]->getPreco() << std::endl;
+    }
 }
-

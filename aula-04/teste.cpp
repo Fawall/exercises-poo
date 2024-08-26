@@ -28,21 +28,21 @@ void teste2() {
     Reserva *t1 = new Reserva();
     Reserva *t2 = new Reserva();
 
-    t1->setInicio(1);
+    t1->setInicio(5);
     t1->setFim(8);
     t1->setQuarto(22);
 
-    t2->setInicio(5);
-    t2->setFim(9);
-    t2->setQuarto(22);
+    t2->setInicio(11);
+    t2->setFim(12);
+    t2->setQuarto(23);
 
     hotel->adicionar(t1);
     hotel ->adicionar(t2);
 
 
     hotel->imprimir();
-    t1->imprimir();
-    t2->imprimir();
+    // t1->imprimir();
+    // t2->imprimir();
 
 
 
