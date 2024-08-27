@@ -57,7 +57,7 @@ bool Hotel::estaDisponivel(int quarto, int inicio, int fim)
         // Verifica se está tentando adicionar reseva repetida
             for(int j = 0; j < this->quantidade; j++){
 
-                if(reservas[i]->getInicio() == inicio )
+                if(reservas[j]->getInicio() == inicio && reservas[j]->getFim())
                     return false;
             }
             
