@@ -85,6 +85,6 @@ void Hotel::imprimir()
     std::cout << "Hotel com " << this->quantidade << " reservas" << endl;
     for (int i = 0; i < this->quantidade; i++)
     {
-        std::cout << "Reserva (" << reservas[i]->getInicio() << "-" << reservas[i]->getFim() << "): Quarto " << reservas[i]->getQuarto() << " - " << reservas[i]->getPreco() << std::endl;
+        std::cout << "Reserva (" << reservas[i]->getInicio() << "-" << reservas[i]->getFim() << "): Quarto " << reservas[i]->getQuarto() << " - " << reservas[i]->getPreco() << " Reais" << std::endl;
     }
 }
