@@ -6,7 +6,19 @@ using namespace std;
 
 // IMPLEMENTAR CONSTRUTOR
 
+Reserva::Reserva(Quarto* quarto, int inicio, int fim){
+    this->quarto = quarto;
+    this->inicio = inicio;
+    this->fim = fim;
+}
+
+
 //IMPLEMENTAR O DESTRUTOR
+
+Reserva::~Reserva(){
+    cout << "Reserva Deletada" << endl;
+}
+
 
 Quarto *Reserva::getQuarto()
 {

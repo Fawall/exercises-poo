@@ -13,7 +13,7 @@ private:
 
 public:
     Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas);
-
+    
     double getPrecoDiaria();
     
     int getNumeroDoQuarto();

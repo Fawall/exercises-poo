@@ -5,6 +5,13 @@
 using namespace std;
 
 // IMPLEMENTAR CONSTRUTOR
+Quarto::Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas){
+    this->numeroDoQuarto = numeroDoQuarto;
+    this->numeroDePessoas = numeroDePessoas;
+    this->numeroDeCamas = numeroDeCamas;
+
+}
+
 
 int Quarto::getNumeroDeCamas()
 {
