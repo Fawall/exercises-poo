@@ -1,6 +1,7 @@
 #include "Hotel.h"
 #include <iostream>
 
+
 using namespace std;
 
 // IMPLEMENTAR CONSTRUTOR
@@ -10,8 +11,6 @@ Hotel::Hotel(int maximoQuartos, int maximoReservas){
     this->maximoQuartos=maximoQuartos;
     this->maximoReservas=maximoReservas;
     
-    // int *maxQuartos = new int[maximoQuartos];
-    // int *maxReservas = new int[maximoReservas];
 
     this->quartos = new Quarto*[maximoQuartos];
     this->reservas = new Reserva*[maximoReservas];
@@ -83,9 +82,28 @@ void Hotel::imprimir()
     }
 }
 
-bool Hotel::cancelar(Reserva *r)
-{
-    //IMPLEMENTE
-    return false;
-}
+bool Hotel::cancelar(Reserva* r) {
+    int numReservas = getQuantidadeReservas();
 
+    Reserva *aux;
+
+    if (numReservas == 0){
+        return false;
+    }
+
+    for (int i = 0; i < maximoReservas; i++) {
+        if (reservas[i] == r){
+            int j = i;
+            while(reservas[j+1] != nullptr){
+                aux = reservas[j+1];
+                reservas[j] = aux;
+                j++;
+            } 
+            reservas[j] = nullptr;
+            this->quantidadeDeReservas -= 1;
+            return true;
+        }
+    }
+
+    return false; 
+}
