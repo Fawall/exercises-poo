@@ -27,7 +27,7 @@ void teste2() {
 
     Reserva *t1 = new Reserva();
     Reserva *t2 = new Reserva();
-
+    Reserva *t3 = new Reserva();
 
     t1->setInicio(1);
     t1->setFim(8);
@@ -37,9 +37,14 @@ void teste2() {
     t2->setFim(9);
     t2->setQuarto(25);
 
+    t3->setInicio(5);
+    t3->setFim(11);
+    t3->setQuarto(22);
+
 
     hotel->adicionar(t1);
     hotel ->adicionar(t2);
+    hotel->adicionar(t3);
 
     hotel->imprimir();
 
