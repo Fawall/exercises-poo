@@ -15,9 +15,7 @@ Reserva::Reserva(Quarto* quarto, int inicio, int fim){
 
 //IMPLEMENTAR O DESTRUTOR
 
-Reserva::~Reserva(){
-    cout << "Reserva Deletada" << endl;
-}
+Reserva::~Reserva(){}
 
 
 Quarto *Reserva::getQuarto()
