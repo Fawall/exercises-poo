@@ -6,6 +6,21 @@ using namespace std;
 // IMPLEMENTAR CONSTRUTOR
 
 // IMPLEMENTAR DESTRUTOR
+Hotel::Hotel(int maximoQuartos, int maximoReservas){
+    this->maximoQuartos=maximoQuartos;
+    this->maximoReservas=maximoReservas;
+    
+    // int *maxQuartos = new int[maximoQuartos];
+    // int *maxReservas = new int[maximoReservas];
+
+    this->quartos = new Quarto*[maximoQuartos];
+    this->reservas = new Reserva*[maximoReservas];
+}
+
+Hotel::~Hotel(){
+    delete[] quartos;
+    delete[] reservas;
+}
 
 Quarto **Hotel::getQuartos()
 {
