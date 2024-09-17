@@ -2,9 +2,10 @@
 
 #include "Hotel.h"
 #include "Quarto.h"
+#include "Reserva.h"
 
 void teste1() {
-    int numeroQuarto = 32;
+    int numeroQuarto = 23;
     int numeroPessoas = 3;
     int numeroDeCamas = 2;
 
@@ -18,7 +19,8 @@ void teste1() {
     reserva->imprimir();
 
     reserva->~Reserva();
-    // IMPLEMENTE seguindo o enunciado
+    quarto->~Quarto();
+
 }
 
 void teste2() {
@@ -40,8 +42,8 @@ void teste2() {
     h->fazer(r);
     h->fazer(r2);
     h->fazer(r3);
-
-    h->cancelar(r);
+    
+    h->cancelar(r2);
 
     h->imprimir();
     h->~Hotel();

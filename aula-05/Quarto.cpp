@@ -12,6 +12,7 @@ Quarto::Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas){
 
 }
 
+Quarto::~Quarto(){}
 
 int Quarto::getNumeroDeCamas()
 {
