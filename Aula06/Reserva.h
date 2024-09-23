@@ -4,7 +4,7 @@
 #include "Quarto.h"
 
 class Reserva {
-private:
+protected:
     Quarto *quarto = nullptr;
     int inicio = 0;
     int fim = 0;
@@ -13,6 +13,7 @@ private:
 
 public:
     Reserva(Quarto* quarto, int inicio, int fim);
+    Reserva();
     virtual ~Reserva();
     
     Quarto* getQuarto();
