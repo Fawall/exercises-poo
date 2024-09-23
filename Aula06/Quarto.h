@@ -18,7 +18,7 @@ public:
     int getNumeroDoQuarto();
     int getNumeroDePessoas();
     int getNumeroDeCamas();
-
+    ~Quarto();
     void imprimir();
 };
 

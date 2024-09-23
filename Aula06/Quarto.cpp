@@ -37,6 +37,7 @@ double Quarto::getPrecoDiaria()
         return 100 * numeroDePessoas;
     }
 }
+Quarto::~Quarto(){};
 
 void Quarto::imprimir()
 {
