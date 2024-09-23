@@ -16,10 +16,8 @@ PacoteDeFinalDeSemana::PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool te
         this->cafe = true;
         this->precoTotal = precoTotal + 20;
     } 
-    else{
-        this->cafe = false;
-    }
-
+    this->cafe = false;
+    
 }
 
 
