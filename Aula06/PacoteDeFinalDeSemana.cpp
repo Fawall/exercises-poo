@@ -1,11 +1,12 @@
 #include "PacoteDeFinalDeSemana.h"
+#include "Reserva.h"
 #include <iostream>
 
 
 using namespace std;
 
 
-PacoteDeFinalDeSemana::PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool temCafe): Reserva(){
+PacoteDeFinalDeSemana::PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool temCafe): Reserva(quarto,0, 2){
 
     this->quarto = quarto;
     this->inicio = inicio;
@@ -13,19 +14,13 @@ PacoteDeFinalDeSemana::PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool te
     
     if(temCafe != false){
         this->cafe = true;
-        this->precoTotal = (100 + 20) * 2;
+        this->precoTotal = precoTotal + 20;
     } 
     else{
         this->cafe = false;
-        this->precoTotal = 100 * 2;
     }
 
 }
 
-void PacoteDeFinalDeSemana::imprimir(){
-    cout << "Reserva (" << this->diaria << " dias):" << endl;
-    quarto->imprimir();
-    cout << "Preco total: " << this->precoTotal << endl;
-}
 
 PacoteDeFinalDeSemana::~PacoteDeFinalDeSemana(){}

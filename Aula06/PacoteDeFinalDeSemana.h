@@ -10,7 +10,7 @@ using namespace std;
 
 class PacoteDeFinalDeSemana : public Reserva{
 
-private:
+protected:
     Quarto* quarto;
     int inicio = 0;
     int diaria = 2;
@@ -18,7 +18,6 @@ private:
     //Inclua aqui os atributos necessarios
 public:
     PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool temCafe);
-    void imprimir();
     virtual ~PacoteDeFinalDeSemana();
 };
 #endif
