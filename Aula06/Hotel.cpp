@@ -23,6 +23,12 @@ int Hotel::getQuantidadeReservas()
 
 bool Hotel::fazer(Reserva *r)
 {
+    bool verifica = estaDisponivel(r->getQuarto(), r->getInicio(), r->getFim());
+    
+    if(verifica == false){
+        return false;
+    }
+
     if (quantidadeDeReservas >= maximoReservas)
     {
         return false;
@@ -46,5 +52,17 @@ void Hotel::imprimir()
 
 bool Hotel::estaDisponivel(Quarto *q, int inicio, int fim)
 {
-    //IMPLEMENTE A FUNCAO
+    for (int i = 0; i < quantidadeDeReservas; i++)
+    {
+        if (reservas[i]->getQuarto() == q)
+        {
+            int reservaInicio = reservas[i]->getInicio();
+            int reservaFim = reservas[i]->getFim();
+            if (!(fim <= reservaInicio || inicio >= reservaFim))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
