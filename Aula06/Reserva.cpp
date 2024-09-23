@@ -14,7 +14,6 @@ Reserva::Reserva(Quarto *quarto, int inicio, int fim)
     precoTotal = quarto->getPrecoDiaria() * diarias;
 }
 
-Reserva::Reserva(){};
 
 Reserva::~Reserva()
 {

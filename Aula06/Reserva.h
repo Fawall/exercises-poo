@@ -13,7 +13,6 @@ protected:
 
 public:
     Reserva(Quarto* quarto, int inicio, int fim);
-    Reserva();
     virtual ~Reserva();
     
     Quarto* getQuarto();
