@@ -4,14 +4,21 @@
 // Faca os includes necessarios
 #include <string>
 #include "Quarto.h"
+#include "Reserva.h"
 
 using namespace std;
 
-class PacoteDeFinalDeSemana {
+class PacoteDeFinalDeSemana : public Reserva{
+
 private:
+    Quarto* quarto;
+    int inicio = 0;
+    int diaria = 2;
+    bool temCafe;
     //Inclua aqui os atributos necessarios
 public:
     PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool temCafe);
+    void imprimir();
     virtual ~PacoteDeFinalDeSemana();
 };
 #endif
