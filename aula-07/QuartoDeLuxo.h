@@ -1,7 +1,13 @@
 #ifndef QUARTO_DE_LUXO_H
 #define QUARTO_DE_LUXO_H
 
-class QuartoDeLuxo {
+#include "Quarto.h"
+
+class QuartoDeLuxo : public Quarto {
+  protected:
+    int numeroDoQuarto;
+    bool kingSize;
+    bool sacada;
   public:
     QuartoDeLuxo(int numeroDoQuarto, bool kingSize, bool sacada);
     ~QuartoDeLuxo();
