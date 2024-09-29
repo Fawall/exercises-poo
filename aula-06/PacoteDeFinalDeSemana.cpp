@@ -11,6 +11,7 @@ PacoteDeFinalDeSemana::PacoteDeFinalDeSemana(Quarto* quarto, int inicio, bool te
     this->quarto = quarto;
     this->inicio = inicio;
     this->temCafe = temCafe;
+    this->diaria = fim - inicio;
     
     if(temCafe != false){
         this->cafe = true;
