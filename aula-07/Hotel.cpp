@@ -30,7 +30,9 @@ QuartoDeLuxo **Hotel::getQuartosDeLuxo(int &quantidade)
             quartosDeLuxo[i] = quartoDeLuxo;
             quantidade++;
         }
-
+    }
+    if(quantidade == 0){
+        return nullptr;
     }
 
     return quartosDeLuxo;
