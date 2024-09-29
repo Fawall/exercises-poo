@@ -18,6 +18,24 @@ Quarto **Hotel::getQuartos()
     return quartos;
 }
 
+QuartoDeLuxo **Hotel::getQuartosDeLuxo(int &quantidade)
+{
+    QuartoDeLuxo **quartosDeLuxo = new QuartoDeLuxo *[maximoQuartos];
+
+    for (int i = 0; i < quantidadeDeQuartos; i++)
+    {
+        QuartoDeLuxo *quartoDeLuxo = dynamic_cast<QuartoDeLuxo *>(quartos[i]);
+        if (quartoDeLuxo != nullptr)
+        {
+            quartosDeLuxo[i] = quartoDeLuxo;
+            quantidade++;
+        }
+
+    }
+
+    return quartosDeLuxo;
+}
+
 Reserva **Hotel::getReservas()
 {
     return reservas;
