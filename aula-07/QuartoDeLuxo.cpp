@@ -34,18 +34,26 @@ double QuartoDeLuxo::getPrecoDiaria() {
 
 double QuartoDeLuxo::getPrecoDiaria(double desconto) {
   if(kingSize != false && sacada != false) {
-    return (300 + (75 + 150)) * desconto;
+    double precoNormal = (300 + 75 + 150);
+    double precoComDesconto = (300 + 75 + 150) * desconto;
+    return (300 + 75 + 150) -  precoComDesconto;
   }
 
   if(kingSize != false && sacada == false) {
-    return (300 + 75) * desconto;
+    double precoNormal = (300 + 75);
+    double precoComDesconto = (300 + 75) * desconto;
+    return precoNormal - precoComDesconto;
   }
   if(kingSize == false && sacada == false){
-    return 300 * desconto;
+    double precoNormal = 300;
+    double precoComDesconto = 300 * desconto;
+    return precoNormal - precoComDesconto;
   }
 
   else if(kingSize == false && sacada != false){
-    return (300 + 150) * desconto;
+    double precoNormal = (300 + 150);
+    double precoComDesconto = (300 + 150) * desconto;
+    return precoNormal - precoComDesconto;
   }
 }
 
