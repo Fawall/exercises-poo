@@ -34,7 +34,6 @@ QuartoDeLuxo** Hotel::getQuartosDeLuxo(int &quantidade)
         if (quartoDeLuxo != nullptr)
         {     
             quartosDeLuxo[i] = quartoDeLuxo;
-            // posVetor++;
             quantidade++;
         }
     }
