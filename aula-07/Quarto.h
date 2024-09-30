@@ -16,13 +16,13 @@ private:
 public:
     Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas);
 
-    double getPrecoDiaria();
+    virtual double getPrecoDiaria();
     int getNumeroDoQuarto();
     int getNumeroDePessoas();
     int getNumeroDeCamas();
     virtual ~Quarto();
 
-    void imprimir();
+    virtual void imprimir();
 };
 
 #endif  // QUARTO_H
