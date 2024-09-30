@@ -18,18 +18,23 @@ Quarto **Hotel::getQuartos()
     return quartos;
 }
 
+
 QuartoDeLuxo** Hotel::getQuartosDeLuxo(int &quantidade)
 {
-    QuartoDeLuxo **QuartosDeLuxo = new QuartoDeLuxo *[maximoQuartos];
-    int posicaoVetor = 0;
+    QuartoDeLuxo **quartosDeLuxo = new QuartoDeLuxo *[maximoQuartos];
+    /*
+    A variável i é um atributo da classe Hotel e foi inicializada com 0 no construtor da classe Hotel 
+    e é incrementada a cada chamada do método getQuartosDeLuxo.
+    Com o objetivo de evitar que o laço for percorra os mesmos quarto.
+    */
 
-    for (int i = 0; i < quantidadeDeQuartos; i++)
+    for (this->i; i < quantidadeDeQuartos; i++)
     {
         QuartoDeLuxo *quartoDeLuxo = dynamic_cast<QuartoDeLuxo *>(quartos[i]);
         if (quartoDeLuxo != nullptr)
-        {
-            QuartosDeLuxo[posicaoVetor] = quartoDeLuxo;
-            posicaoVetor += 1;
+        {     
+            quartosDeLuxo[i] = quartoDeLuxo;
+            // posVetor++;
             quantidade++;
         }
     }
@@ -37,7 +42,7 @@ QuartoDeLuxo** Hotel::getQuartosDeLuxo(int &quantidade)
         return nullptr;
     }
 
-    return QuartosDeLuxo;
+    return quartosDeLuxo;
 }
 
 Reserva **Hotel::getReservas()

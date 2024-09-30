@@ -14,6 +14,8 @@ private:
     int maximoReservas;
     int quantidadeDeReservas = 0;
     int quantidadeDeQuartos = 0;
+protected:
+    int i = 0;
 
 public:
     Hotel(int maximoQuartos, int maximoReservas);
