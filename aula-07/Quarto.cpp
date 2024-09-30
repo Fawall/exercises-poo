@@ -38,6 +38,8 @@ double Quarto::getPrecoDiaria()
     }
 }
 
+Quarto::~Quarto(){};
+
 void Quarto::imprimir()
 {
     cout << "Quarto " << numeroDoQuarto << ": " << numeroDePessoas << " pessoas, "

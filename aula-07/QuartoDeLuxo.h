@@ -15,7 +15,7 @@ class QuartoDeLuxo : public Quarto {
     double getPrecoDiaria();
     double getPrecoDiaria(double desconto);
 
-    void imprimir();
+    virtual void imprimir();
 
 };
 

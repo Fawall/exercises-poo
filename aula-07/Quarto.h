@@ -20,7 +20,7 @@ public:
     int getNumeroDoQuarto();
     int getNumeroDePessoas();
     int getNumeroDeCamas();
-    virtual ~Quarto() = default;
+    virtual ~Quarto();
 
     void imprimir();
 };

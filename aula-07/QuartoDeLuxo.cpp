@@ -50,6 +50,6 @@ double QuartoDeLuxo::getPrecoDiaria(double desconto) {
 }
 
 void QuartoDeLuxo::imprimir() {
-  cout << "Quarto de luxo " << numeroDoQuarto << ": Diaria custa " << getPrecoDiaria() << " Reais" << endl;
+  cout << "Quarto de luxo " << this->getNumeroDoQuarto() << ": Diaria custa " << getPrecoDiaria() << " Reais" << endl;
   // Implemente o novo método imprimir
 }
