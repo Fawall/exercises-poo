@@ -11,9 +11,7 @@ QuartoDeLuxo::QuartoDeLuxo(int numeroDoQuarto, bool kingSize, bool sacada) : Qua
   this->sacada = sacada;
 }
 
-QuartoDeLuxo::~QuartoDeLuxo() {
-
-}
+QuartoDeLuxo::~QuartoDeLuxo() { }
 
 double QuartoDeLuxo::getPrecoDiaria() {
   if(kingSize != false && sacada != false) {
