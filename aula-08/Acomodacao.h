@@ -12,7 +12,7 @@ public:
   virtual ~Acomodacao();
 
   int getNumero();
-  double getPrecoDiaria();
-  void imprimir();
+  virtual double getPrecoDiaria() = 0;
+  virtual void imprimir();
 };
 #endif

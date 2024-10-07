@@ -10,3 +10,7 @@ Acomodacao::~Acomodacao() {
 int Acomodacao::getNumero() {
   return numero;
 }
+
+void Acomodacao::imprimir() {
+  // Implemente o método imprimir
+}
