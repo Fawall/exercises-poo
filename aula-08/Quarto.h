@@ -1,9 +1,12 @@
 #ifndef QUARTO_H
 #define QUARTO_H
 
+#include "Acomodacao.h"
+
 // Faça os includes necessários e modifique a classe!
 
-class Quarto {
+class Quarto : public Acomodacao
+{
 protected:
     int numeroDePessoas = 0;
     int numeroDeCamas = 0;

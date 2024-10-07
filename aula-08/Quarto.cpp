@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Quarto::Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas) 
+Quarto::Quarto(int numeroDoQuarto, int numeroDePessoas, int numeroDeCamas) : Acomodacao(numeroDoQuarto)
 {
     this->numeroDeCamas = numeroDeCamas;
     this->numeroDePessoas = numeroDePessoas;
@@ -33,8 +33,8 @@ double Quarto::getPrecoDiaria()
 }
 
 // Descomente e corrija se necessário
-// void Quarto::imprimir()
-// {
-//     cout << "Quarto " << getNumero() << ": " << numeroDePessoas << " pessoas, "
-//          << numeroDeCamas << " camas - Diaria custa " << this->getPrecoDiaria() << endl;
-// }
+void Quarto::imprimir()
+{
+    cout << "Quarto " << getNumero() << ": " << numeroDePessoas << " pessoas, "
+         << numeroDeCamas << " camas - Diaria custa " << this->getPrecoDiaria() << endl;
+}
