@@ -15,34 +15,10 @@ void teste1() {
   ap->~Apartamento();
   ap2->~Apartamento();
   ap3->~Apartamento();
+
   //Implemente o teste
 }
-void testex() {
-  Quarto *q1 = new Quarto(101, 2, 1);
-  Quarto *q2 = new Quarto(102, 4, 2);
 
-  q1->imprimir();
-  q2->imprimir();
-
-  delete q1;
-  delete q2;
-}
-
-void testey(){
-  Acomodacao *quarto = new Quarto(201, 4,2);
-  Acomodacao *apartamento = new Apartamento(301, 150);
-
-  // Teste do método getPrecoDiaria de Apartamento
-  Apartamento *ap = new Apartamento(401, 200);
-  std::cout << "Preco diaria do apartamento: " << ap->getPrecoDiaria() << std::endl;
-
-  // Teste do método imprimir de Apartamento
-  ap->imprimir();
-
-  delete quarto;
-  delete apartamento;
-  delete ap;
-}
 
 
 void teste2() { 
@@ -68,3 +44,31 @@ void teste2() {
   
 }
 
+void teste3() {
+  Apartamento *ap = new Apartamento(21, 60);
+  std::cout << "Teste dos GETTER de Preco Base";
+
+  /* Como o valor pré-definido de precoBase é zero, o valor esperado é zero */
+  std::cout << "Preco Base: " << Apartamento::getPrecoBase() << std::endl;
+
+  /* Definindo preço Base como 200*/
+  std::cout << "TESTE DO SETTER De Preco Base" << std::endl <<
+  "Definindo precoBase como 200" << std::endl;
+
+  Apartamento::setPrecoBase(200);
+
+  std::cout << "Testando getter de PrecoBase apos a alteracao" << std::endl;
+  std::cout << "Preco base: " << ap->getPrecoBase();
+
+}
+
+void teste4() {
+  Apartamento::setPrecoBase(250);
+  Apartamento *ap = new Apartamento(21, 60);
+
+  std::cout << "Teste do GETTER de Preco Diaria com precoBase estatico" << std::endl;
+  std::cout << "Preco Base: " << Apartamento::getPrecoBase() << std::endl;
+  std::cout << "Preco Diaria: " << ap->getPrecoDiaria() << std::endl;
+
+  ap->~Apartamento();
+}
