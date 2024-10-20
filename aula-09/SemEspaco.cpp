@@ -2,5 +2,5 @@
 
 using namespace std;
 
-SemEspaco::SemEspaco(std::string msg) : logic_error(msg)
+SemEspaco::SemEspaco(string msg) : logic_error(msg)
 {};
