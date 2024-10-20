@@ -1,12 +1,18 @@
 // Faca os includes necessarios
 #include "Quarto.h"
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
 Quarto::Quarto(int numeroDoQuarto, int numeroDeCamas) {
-  // Altere conforme o enunciado
+  if(numeroDoQuarto <= 0)
+    throw invalid_argument("Numero do quarto invalido");
+  if(numeroDeCamas <= 0)
+    throw invalid_argument("Numero de camas invalido");
+
 }
+    
 
 Quarto::~Quarto() {}
 
