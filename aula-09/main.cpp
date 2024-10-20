@@ -1,9 +1,8 @@
 void teste1();
 void teste2();
 void teste3();
-void teste4();
 
 int main() {
-  teste4(); // Substitua pelo teste que deseja testar
+  teste1(); // Substitua pelo teste que deseja efetuar
   return 0;
 }
