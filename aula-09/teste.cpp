@@ -1,4 +1,5 @@
 #include "Quarto.h"
+#include "Reserva.h"
 #include "SemEspaco.h"
 #include <iostream>
 #include <stdexcept>
@@ -38,5 +39,42 @@ void teste2() {
 }
 
 void teste3() {
-  // Altere conforme o enunciado
+  Quarto *q1 = new Quarto(1, 1);
+  Reserva *r = nullptr;
+  try {
+  r = new Reserva(q1, 2, 1, 2);
+    
+  } catch (invalid_argument *e) {
+    cout << e->what() << endl;
+    delete e;
+  }
+  r = nullptr;
+
+  try {
+    r = new Reserva(q1, 0, 1, 0);
+  } catch (invalid_argument *e) {
+    cout << e->what() << endl;
+    delete e;
+  }
+  r = nullptr;
+
+  try {
+    r = new Reserva(q1, 0, 1, 3);
+  } catch(invalid_argument *e) {
+    cout << e->what() << endl;
+    delete e;
+  }
+  r = nullptr;
+
+  try {
+    r = new Reserva(q1, 0, 1, 2);
+    r->imprimir();
+  } catch(invalid_argument *e) {
+    cout << e->what() << endl;
+    delete e;
+  }
+
+  q1->~Quarto();
+  r->~Reserva();
+
 }
