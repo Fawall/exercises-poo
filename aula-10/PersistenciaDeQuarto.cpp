@@ -29,7 +29,12 @@ void PersistenciaDeQuarto::inserir(Quarto *q) {
 // Implemente
 Quarto **PersistenciaDeQuarto::obter(int &quantidade) {
     ifstream file;
+    Quarto *q;
+
+    int numeroCamas = 0;
+    int numeroQuarto = 0;
     string linha;
+
     file.open("teste2.txt");
 
     if(file.fail()){
@@ -37,18 +42,32 @@ Quarto **PersistenciaDeQuarto::obter(int &quantidade) {
     }
 
     while(getline(file, linha)){
-        
         if (linha.empty()) {
-            throw logic_error("Arquivo com formatacao inesperada");
+            throw new logic_error("Arquivo com formatacao inesperada");
         }
-
-        cout << linha << endl;
         quantidade++;
     }
     
-    if(quantidade == 0)
+    if(quantidade == 0){
         return nullptr;
+    }
+    
+    quantidade = quantidade/2;
+    Quarto **quartos = new Quarto*[quantidade];
+
+    file.clear();
+    file.seekg(0, ios::beg);
+
+    for (int i = 0; i < quantidade; i++) {
+        getline(file, linha);
+        numeroQuarto = stoi(linha);
+        getline(file, linha);
+        numeroCamas = stoi(linha);
+
+        quartos[i] = new Quarto(numeroQuarto, numeroCamas);
+    }
 
 
-    return nullptr;
+    file.close();
+    return quartos;
 }
