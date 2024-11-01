@@ -1,18 +1,21 @@
 #include "Hotel.h"
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 Hotel::Hotel() {
-  this->quartos = new Quarto *[QUANTIDADE_MAXIMA];
+  this->quartos = new vector<Quarto *>();
+
   this->quantidadeDeQuartos = 0;
   this->reservas = new Reserva *[QUANTIDADE_MAXIMA];
   this->quantidadeDeReservas = 0;
 }
 
 Hotel::~Hotel() {
-  delete[] this->quartos;
+  delete this->quartos;
 
   for (int i = 0; i < this->quantidadeDeReservas; i++) {
     delete this->reservas[i];
@@ -24,22 +27,21 @@ Hotel::~Hotel() {
 }
 
 void Hotel::adicionar(Quarto *q) {
-  if (this->quantidadeDeQuartos == QUANTIDADE_MAXIMA) {
+  if (quartos->size() == QUANTIDADE_MAXIMA) {
     throw new overflow_error("Quantidade maxima de quartos atingida");
   }
 
-  for (int i = 0; i < this->quantidadeDeQuartos; i++) {
-    if (this->quartos[i] == q) {
+  for (int i = 0; i < quartos->size(); i++) {
+    if (this->quartos->at(i) == q) {
       throw new invalid_argument("Quarto ja adicionado");
     }
   }
-
-  this->quartos[this->quantidadeDeQuartos++] = q;
+  quantidadeDeQuartos++;
+  this->quartos->push_back(q);
 }
 
-Quarto **Hotel::getQuartos() { return this->quartos; }
+Quarto **Hotel::getQuartos() { return quartos->data(); }
 
-int Hotel::getQuantidadeDeQuartos() { return this->quantidadeDeQuartos; }
 
 void Hotel::fazer(Reserva *r) {
   if (this->quantidadeDeReservas == QUANTIDADE_MAXIMA) {
@@ -78,10 +80,10 @@ Reserva **Hotel::getReservas() { return this->reservas; }
 int Hotel::getQuantidadeDeReservas() { return this->quantidadeDeReservas; }
 
 void Hotel::imprimir() {
-  cout << "Hotel com " << this->getQuantidadeDeQuartos()
+  cout << "Hotel com " << this->quartos->size()
        << " quarto(s):" << endl;
   for (int i = 0; i < this->quantidadeDeQuartos; i++) {
-    this->quartos[i]->imprimir();
+    (*quartos)[i]->imprimir();
   }
 
   cout << "e " << this->getQuantidadeDeReservas() << " reserva(s):" << endl;
