@@ -4,16 +4,18 @@
 #include "Quarto.h"
 #include "Reserva.h"
 #include <vector>
+#include <list>
+
 #define QUANTIDADE_MAXIMA 10
 
 using namespace std;
 
 class Hotel {
 private:
-  std::vector<Quarto *> *quartos;
+  vector<Quarto *> *quartos;
   int quantidadeDeQuartos;
-  Reserva **reservas;
-  int quantidadeDeReservas;
+  list<Reserva *> *reservas;
+  
 
 public:
   Hotel();
@@ -26,8 +28,8 @@ public:
   // metodos que usam Reserva
   void fazer(Reserva *r);
   void cancelar(Reserva *r);
-  Reserva **getReservas();
-  int getQuantidadeDeReservas();
+  list< Reserva *> *getReservas();
+  
 
   void imprimir();
 };

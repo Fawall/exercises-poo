@@ -2,26 +2,28 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <list>
 #include <algorithm>
 
 using namespace std;
 
 Hotel::Hotel() {
   this->quartos = new vector<Quarto *>();
-
   this->quantidadeDeQuartos = 0;
-  this->reservas = new Reserva *[QUANTIDADE_MAXIMA];
-  this->quantidadeDeReservas = 0;
+  this->reservas = new list<Reserva *>();
 }
 
 Hotel::~Hotel() {
   delete this->quartos;
+  
+  list<Reserva *>::iterator i = reservas->begin();
 
-  for (int i = 0; i < this->quantidadeDeReservas; i++) {
-    delete this->reservas[i];
-    cout << "Reserva " << i << " deletada" << endl;
+
+  for (i; i != reservas->end(); i++) {
+    delete *i;
+    cout << "Reserva " << distance(reservas->begin(), i) << " deletada" << endl;
   }
-  delete[] this->reservas;
+  delete reservas;
 
   cout << "Hotel deletado" << endl;
 }
@@ -44,40 +46,41 @@ Quarto **Hotel::getQuartos() { return quartos->data(); }
 
 
 void Hotel::fazer(Reserva *r) {
-  if (this->quantidadeDeReservas == QUANTIDADE_MAXIMA) {
-    throw new overflow_error("Quantidade maxima de reservas atingida");
-  }
+  list<Reserva *>::iterator i = reservas->begin();
 
-  for (int i = 0; i < this->quantidadeDeReservas; i++) {
-    if (this->reservas[i]->getQuarto() == r->getQuarto()) {
-      if (this->reservas[i]->getFim() > r->getInicio() &&
-          this->reservas[i]->getInicio() < r->getFim()) {
+  for (i; i != reservas->end(); i++) {
+    if( (*i)->getQuarto() == r->getQuarto() ){
+      if( (*i)->getFim() > r->getInicio() && (*i)->getInicio() < r->getFim() ){
         throw new invalid_argument("Periodo indisponivel");
       }
     }
   }
-
-  this->reservas[this->quantidadeDeReservas++] = r;
+  reservas->push_back(r);
+  // this->reservas[this->quantidadeDeReservas++] = r;
 }
 
 void Hotel::cancelar(Reserva *r) {
   bool reservaEncontrada = false;
+  list<Reserva *>::iterator i = reservas->begin();
 
-  for (int i = 0; i < this->quantidadeDeReservas; i++) {
-    if (this->reservas[i] == r) {
+  for (i; i != reservas->end(); i++) {
+    if( *i == r ){
       reservaEncontrada = true;
-      this->quantidadeDeReservas--;
+      remove(reservas->begin(), reservas->end(), r);
     }
+    // if (this->reservas[i] == r) {
+    //   reservaEncontrada = true;
+    //   this->quantidadeDeReservas--;
+    // }
 
-    if (reservaEncontrada) {
-      this->reservas[i] = this->reservas[i + 1];
-    }
+    // if (reservaEncontrada) {
+    //   (*i) = *(i++);
+    // }
   }
 }
 
-Reserva **Hotel::getReservas() { return this->reservas; }
+list<Reserva*> *Hotel::getReservas() { return this->reservas ; }
 
-int Hotel::getQuantidadeDeReservas() { return this->quantidadeDeReservas; }
 
 void Hotel::imprimir() {
   cout << "Hotel com " << this->quartos->size()
@@ -86,8 +89,10 @@ void Hotel::imprimir() {
     (*quartos)[i]->imprimir();
   }
 
-  cout << "e " << this->getQuantidadeDeReservas() << " reserva(s):" << endl;
-  for (int i = 0; i < this->quantidadeDeReservas; i++) {
-    this->reservas[i]->imprimir();
+  list<Reserva*>::iterator i = reservas->begin();
+
+  cout << "e " << reservas->size() << " reserva(s):" << endl;
+  for (i; i != reservas->end(); i++) {
+    (*i)->imprimir();
   }
 }
