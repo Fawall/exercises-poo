@@ -66,7 +66,8 @@ void Hotel::cancelar(Reserva *r) {
   for (i; i != reservas->end(); i++) {
     if( *i == r ){
       reservaEncontrada = true;
-      remove(reservas->begin(), reservas->end(), r);
+      // remove(reservas->begin(), reservas->end(), r);
+      reservas->remove(r);
     }
     // if (this->reservas[i] == r) {
     //   reservaEncontrada = true;
