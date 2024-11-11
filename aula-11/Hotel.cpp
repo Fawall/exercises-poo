@@ -3,7 +3,6 @@
 #include <stdexcept>
 #include <vector>
 #include <list>
-#include <algorithm>
 
 using namespace std;
 
@@ -42,7 +41,7 @@ void Hotel::adicionar(Quarto *q) {
   this->quartos->push_back(q);
 }
 
-Quarto **Hotel::getQuartos() { return quartos->data(); }
+vector<Quarto *> *Hotel::getQuartos() { return quartos; }
 
 
 void Hotel::fazer(Reserva *r) {
@@ -61,23 +60,16 @@ void Hotel::fazer(Reserva *r) {
 
 void Hotel::cancelar(Reserva *r) {
   bool reservaEncontrada = false;
+  
   list<Reserva *>::iterator i = reservas->begin();
-
+  
   for (i; i != reservas->end(); i++) {
     if( *i == r ){
       reservaEncontrada = true;
-      // remove(reservas->begin(), reservas->end(), r);
       reservas->remove(r);
     }
-    // if (this->reservas[i] == r) {
-    //   reservaEncontrada = true;
-    //   this->quantidadeDeReservas--;
-    // }
-
-    // if (reservaEncontrada) {
-    //   (*i) = *(i++);
-    // }
   }
+  
 }
 
 list<Reserva*> *Hotel::getReservas() { return this->reservas ; }

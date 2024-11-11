@@ -23,7 +23,7 @@ public:
 
   // metodos que usam Quarto
   void adicionar(Quarto *q);
-  Quarto **getQuartos();
+  vector<Quarto*> *getQuartos();
 
   // metodos que usam Reserva
   void fazer(Reserva *r);
